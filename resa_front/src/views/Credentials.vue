@@ -32,7 +32,7 @@
   import {getCookie, setCookie } from "../utils/cookies";
 
 export default {
-  name: "AboutView",
+  name: "Credentials-view",
   data() {
     return {
       state: 0,
