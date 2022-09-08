@@ -1,35 +1,49 @@
 <template>
-  <div  class="uk-align-center uk-margin-medium uk-padding-medium uk-card uk-card-default uk-card-body uk-width-1-2@m">
-    <form  class="uk-align-center uk-margin-medium uk-padding-medium">
-    <fieldset class="uk-fieldset">
+    <div>
+      
+      <Nav />
 
-        <legend class="uk-legend">Connexion : </legend>
+      <div class="uk-grid-collapse uk-child-width-expand@s" uk-grid>
+          <div>
+              <div class="uk-card">
+                <img alt="Vue logo" class="" src="https://2205679.fs1.hubspotusercontent-na1.net/hubfs/2205679/nousrejoindre-FR.jpg">
+              </div>
+          </div>
+          <div>
+              <div class="uk-card uk-card-default uk-card-body">
+                <form  class="uk-align-center uk-margin-medium uk-padding-medium">
+                  <legend class="uk-legend">Connexion : </legend>
 
-        <div class="uk-margin">
-            <input class="uk-input" type="text" placeholder="Email">
-        </div>
+                    <div class="uk-margin">
+                        <input class="uk-input" type="text" placeholder="Email">
+                    </div>
 
-        <div class="uk-margin">
-            <input class="uk-input" type="password" placeholder="Mot de passe">
-        </div>
+                    <div class="uk-margin">
+                        <input class="uk-input" type="password" placeholder="Mot de passe">
+                    </div>
 
-        <div class="uk-margin uk-grid-small uk-child-width-auto uk-grid">
-            <label><input class="uk-checkbox" type="checkbox" checked> Rester connecter ? </label>
-        </div>
+                    <div class="uk-margin uk-grid-small uk-child-width-auto uk-grid">
+                        <label><input class="uk-checkbox" type="checkbox" checked> Rester connecter ? </label>
+                    </div>
 
-        <button class="uk-button uk-button-default">Me connecter</button>
+                    <button class="uk-button uk-button-default">Me connecter</button>
+
+                </form>
+              </div>
+          </div>
 
 
+      </div>
 
-    </fieldset>
-</form>
-</div>
 
+  
+    </div>
 </template>
 
 <script>
-  import { login } from "../utils/users/login";
-  import {getCookie, setCookie } from "../utils/cookies";
+import { login } from "../utils/users/login";
+import {getCookie, setCookie } from "../utils/cookies";
+import Nav from '@/components/Nav.vue';
 
 export default {
   name: "Credentials-view",
@@ -43,7 +57,11 @@ export default {
       processing: false,
     };
   },
+  components: {
+    Nav
+  },
   beforeCreate() {
+    document.title = 'Yooz - login'
     if (getCookie("token")) {
       this.$router.push("/dashboard");
     }
