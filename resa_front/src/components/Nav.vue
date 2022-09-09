@@ -20,7 +20,7 @@
                 <input class="uk-input uk-form-width-small uk-margin-large-left" type="text" placeholder="Trigrame">
                 <button class="uk-button uk-button-default">Trouver quelqu'un</button>
             </form>
-            <router-link to="/credentials" class="uk-align-right uk-margin-large-left"><button class="uk-button uk-button-default">Login me</button></router-link>
+            <router-link to="/credentials" class="uk-align-right uk-margin-large-left uk-margin-medium-right uk-position-center-right"><button class="uk-button uk-button-default">Login me</button></router-link>
         </div>
 
     </div>
