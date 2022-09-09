@@ -8,17 +8,17 @@
 
         <ul class="uk-navbar-nav">
             <li>
-                <a href="#">
+                <router-link to="/bookingdesk" >
                     <span class="uk-icon uk-margin-small-right uk-margin-large-left" uk-icon="icon: thumbnails"></span>
                     Réserver un bureau
-                </a>
+                </router-link>
             </li>
         </ul>
 
         <div class="uk-navbar-item">
             <form action="javascript:void(0)">
                 <input class="uk-input uk-form-width-small uk-margin-large-left" type="text" placeholder="Trigrame">
-                <button class="uk-button uk-button-default">Trouver quelqu'un</button>
+                <router-link to="/searchpeople" ><button class="uk-button uk-button-default">Trouver quelqu'un</button></router-link>
             </form>
             <router-link to="/credentials" class="uk-align-right uk-margin-large-left uk-margin-medium-right uk-position-center-right"><button class="uk-button uk-button-default">Login me</button></router-link>
         </div>

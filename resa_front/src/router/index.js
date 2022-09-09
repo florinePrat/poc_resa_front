@@ -14,6 +14,22 @@ const routes = [
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
     component: () => import(/* webpackChunkName: "credentials" */ '../views/Credentials.vue')
+  },
+  {
+    path: '/bookingdesk',
+    name: 'bookingdesk',
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: () => import(/* webpackChunkName: "bookingdesk" */ '../views/BookingDesk.vue')
+  },
+  {
+    path: '/searchpeople',
+    name: 'searchpeople',
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: () => import(/* webpackChunkName: "searchpeople" */ '../views/SearchPeople.vue')
   }
 ]
 

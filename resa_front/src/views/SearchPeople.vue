@@ -15,7 +15,6 @@
     <div >
       <router-link to="/credentials" class="uk-margin-xlarge-left"><button class="uk-button uk-button-default uk-margin-xlarge-left"><img alt="Vue logo" src="../assets/favicon.png" class="uk-width-small"> Trouver quelqu'un</button></router-link>
     </div>
-
    
   </div>
 </template>
@@ -25,12 +24,12 @@
 import Nav from '@/components/Nav.vue';
 
 export default {
-  name: 'HomeView',
+  name: 'SearchPeople',
   components: {
-    Nav,
-},
+    Nav
+  },
   mounted() {
-    document.title = 'Yooz - Home'
+    document.title = 'Yooz - Recherche personnes'
   }
 }
 </script>
