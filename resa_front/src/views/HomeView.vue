@@ -3,7 +3,7 @@
     <Nav/>
     <div>
       <div>
-        <router-link to="/credentials" class="uk-margin-xlarge-left"><button class="uk-button uk-button-default uk-margin-xlarge-left"><img alt="Vue logo" src="../assets/favicon.png" class="uk-width-small">Réserver un bureau</button></router-link>
+        <router-link to="/choosedepartment" class="uk-margin-xlarge-left"><a class="uk-button uk-button-default uk-margin-xlarge-left"><img alt="Vue logo" src="../assets/favicon.png" class="uk-width-small">Réserver un bureau</a></router-link>
       </div>
     </div>
 
@@ -13,7 +13,7 @@
    
     
     <div >
-      <router-link to="/credentials" class="uk-margin-xlarge-left"><button class="uk-button uk-button-default uk-margin-xlarge-left"><img alt="Vue logo" src="../assets/favicon.png" class="uk-width-small"> Trouver quelqu'un</button></router-link>
+      <router-link to="/credentials" class="uk-margin-xlarge-left"><a class="uk-button uk-button-default uk-margin-xlarge-left"><img alt="Vue logo" src="../assets/favicon.png" class="uk-width-small"> Trouver quelqu'un</a></router-link>
     </div>
 
    

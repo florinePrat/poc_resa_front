@@ -8,7 +8,7 @@
 
         <ul class="uk-navbar-nav">
             <li>
-                <router-link to="/bookingdesk" >
+                <router-link to="/choosedepartment" >
                     <span class="uk-icon uk-margin-small-right uk-margin-large-left" uk-icon="icon: thumbnails"></span>
                     Réserver un bureau
                 </router-link>
