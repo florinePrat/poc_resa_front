@@ -15,18 +15,18 @@
                   <legend class="uk-legend">Connexion : </legend>
 
                     <div class="uk-margin">
-                        <input class="uk-input" type="text" placeholder="Email">
+                        <input class="uk-input" type="text" placeholder="Email" v-model="mail">
                     </div>
 
                     <div class="uk-margin">
-                        <input class="uk-input" type="password" placeholder="Mot de passe">
+                        <input class="uk-input" type="password" placeholder="Mot de passe" v-model="password">
                     </div>
 
                     <div class="uk-margin uk-grid-small uk-child-width-auto uk-grid">
                         <label><input class="uk-checkbox" type="checkbox" checked> Rester connecter ? </label>
                     </div>
 
-                    <button class="uk-button uk-button-default">Me connecter</button>
+                    <button class="uk-button uk-button-default" @click="loginMe()">Me connecter</button>
 
                 </form>
               </div>
@@ -106,29 +106,27 @@ export default {
   },
 
   methods: {
-    loginMe(e) {
-      e.preventDefault();
-      if (this.isEmailValid && this.isPasswordValid) {
-        this.processing = true;
-        login(this.mail.trim(), this.password)
-          .then((res) => {
-            setCookie("token", res.data.token, 99999999999999999);
-            this.$router.push("/dashboard");
-          })
-          .catch((err) => {
-            this.password = "";
-            if (err.response) {
-              //UIkit.modal.dialog("<p class='uk-modal-body uk-text-center'>Mauvais email ou mot de passe ❌</p>");
-            } else {
-              //UIkit.modal.dialog("<p class='uk-modal-body uk-text-center'>Pas de connexion internet ❌</p>");
-            }
-          })
-          .finally(() => {
-            this.processing = false;
-          });
-      } else {
+    loginMe()  {
+      console.log("loginmethod called")
+      console.log(this.mail, this.password)
+      login(this.mail.trim(), this.password)
+        .then((res) => {
+          setCookie("token", res.data.token, 99999999999999999);
+          this.$router.push("/homeview");
+        })
+        .catch((err) => {
+          this.password = "";
+          if (err.response) {
+            //UIkit.modal.dialog("<p class='uk-modal-body uk-text-center'>Mauvais email ou mot de passe ❌</p>");
+          } else {
+            //UIkit.modal.dialog("<p class='uk-modal-body uk-text-center'>Pas de connexion internet ❌</p>");
+          }
+        })
+      //if (this.isEmailValid && this.isPasswordValid) {
+        
+      //} else {
         //UIkit.modal.dialog("<p class='uk-modal-body uk-text-center'>Champs non valides ❌</p>");
-      }
+      //}
     }
   }
 }
