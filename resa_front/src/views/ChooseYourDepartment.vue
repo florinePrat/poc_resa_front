@@ -87,6 +87,7 @@ import Datepicker from '@vuepic/vue-datepicker';
 import '@vuepic/vue-datepicker/dist/main.css'
 import { ref } from 'vue';
 import { fr } from 'date-fns/locale';
+import { getavailableDesks } from '@/utils/desks/getAvailableDesks';
 
 export default {
   name: 'ChooseYourDepartment',
@@ -106,8 +107,13 @@ export default {
     };
   },
   mounted() {
-    document.title = 'Yooz - Réservation bureau';
-    
+    console.log(this.date.toLocaleDateString("fr"))
+    getavailableDesks(this.date.toLocaleDateString("fr")).then((res) => {
+      console.log(res.data)
+    })
+    .catch((err) => {
+      console.log(err)
+    })
   }
 }
 </script>
