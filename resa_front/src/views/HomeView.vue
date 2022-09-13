@@ -1,6 +1,5 @@
 <template>
   <div class="home">
-    <Nav/>
     <div>
       <div>
         <router-link to="/choosedepartment" class="uk-margin-xlarge-left"><a class="uk-button uk-button-default uk-margin-xlarge-left"><img alt="Vue logo" src="../assets/favicon.png" class="uk-width-small">Réserver un bureau</a></router-link>
@@ -22,15 +21,12 @@
 
 <script>
 // @ is an alias to /src
-import Nav from '@/components/Nav.vue';
 
 export default {
   name: 'HomeView',
   components: {
-    Nav,
 },
   mounted() {
-    document.title = 'Yooz - Home'
   }
 }
 </script>

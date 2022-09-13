@@ -1,8 +1,6 @@
 <template>
     <div>
-      
-      <Nav />
-
+    
       <div class="uk-grid-collapse uk-child-width-expand@s" uk-grid>
           <div>
               <div class="uk-card">
@@ -43,7 +41,6 @@
 <script>
 import { login } from "../utils/users/login";
 import {getCookie, setCookie } from "../utils/cookies";
-import Nav from '@/components/Nav.vue';
 
 export default {
   name: "Credentials-view",
@@ -58,10 +55,8 @@ export default {
     };
   },
   components: {
-    Nav
   },
   beforeCreate() {
-    document.title = 'Yooz - login'
     if (getCookie("token")) {
       this.$router.push("/dashboard");
     }

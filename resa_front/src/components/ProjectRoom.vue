@@ -60,6 +60,6 @@
 
 <script>
     export default {
-      name: 'NavBar',
+      name: 'ProjectRoom',
     };
 </script>

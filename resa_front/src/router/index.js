@@ -10,11 +10,6 @@ const routes = [
         import ('../views/HomeView.vue'),
     meta: {
         title: 'Yooz | Home',
-        meta: [
-            { property: 'og:title', content: "Memomental - insciption - connexion - commencer à jouer" },
-            { property: 'og:site_name', content: 'Memomental' },
-            { property: 'og:type', content: 'website' },
-        ]
     },
   },
   {
@@ -24,11 +19,6 @@ const routes = [
         import ('../views/Credentials.vue'),
     meta: {
         title: 'Yooz | Credentials',
-        meta: [
-            { property: 'og:title', content: "Memomental - insciption - connexion - commencer à jouer" },
-            { property: 'og:site_name', content: 'Memomental' },
-            { property: 'og:type', content: 'website' },
-        ]
     },
   },
   {
@@ -38,11 +28,6 @@ const routes = [
         import ('../views/BookingDesk.vue'),
     meta: {
         title: 'Yooz | Bookingdesk',
-        meta: [
-            { property: 'og:title', content: "Memomental - insciption - connexion - commencer à jouer" },
-            { property: 'og:site_name', content: 'Memomental' },
-            { property: 'og:type', content: 'website' },
-        ]
     },
   },
   {
@@ -52,11 +37,6 @@ const routes = [
         import ('../views/SearchPeople.vue'),
     meta: {
         title: 'Yooz | SearchPeople',
-        meta: [
-            { property: 'og:title', content: "Memomental - insciption - connexion - commencer à jouer" },
-            { property: 'og:site_name', content: 'Memomental' },
-            { property: 'og:type', content: 'website' },
-        ]
     },
   },
   {
@@ -66,11 +46,6 @@ const routes = [
         import ('../views/ChooseYourDepartment.vue'),
     meta: {
         title: 'Yooz | ChooseYourDepartment',
-        meta: [
-            { property: 'og:title', content: "Memomental - insciption - connexion - commencer à jouer" },
-            { property: 'og:site_name', content: 'Memomental' },
-            { property: 'og:type', content: 'website' },
-        ]
     },
   },
 ]
@@ -82,18 +57,15 @@ const router = createRouter({
   
 
 router.beforeEach((to, from, next) => {
-  const publicURLs = ['Home', 'Credentials', 'Bookingdesk', 'SearchPeople', 'ChooseYourDepartment']
-  document.title = to.meta.title;
-  const token = getCookie('token');
-  if (token == null && !publicURLs.includes(to.name)) {
-      if (to.name === 'Share') {
-          setCookie('sharePackageLink', window.location.href, 10)
-      } else {
-          return next({ path: '/' });
-      }
-  } else {
-      return next();
-  }
+    //const publicURLs = ['Credentials']
+    const publicURLs = ['Home', 'Credentials', 'Bookingdesk', 'SearchPeople', 'ChooseYourDepartment']
+    document.title = to.meta.title;
+    const token = getCookie('token');
+    if (token == null && !publicURLs.includes(to.name)) {
+        return next({ path: '/Credentials' });
+    } else {
+        return next();
+    }
 });
 
 router.onError(error => {
