@@ -1,8 +1,6 @@
-import Vue from 'vue'
-import VueRouter from 'vue-router'
+import {createRouter, createWebHistory} from 'vue-router'
 import { getCookie, setCookie } from "../utils/cookies";
 
-Vue.use(VueRouter);
 
 const routes = [
   {
@@ -77,13 +75,14 @@ const routes = [
   },
 ]
 
-const router = new VueRouter({
-  base: process.env.BASE_URL,
-  routes
-});
+const router = createRouter({
+    history: createWebHistory(process.env.BASE_URL),
+    routes
+})
+  
 
 router.beforeEach((to, from, next) => {
-  const publicURLs = ['Home', 'Credentials', 'Demo', 'Validation', 'CGU']
+  const publicURLs = ['Home', 'Credentials', 'Bookingdesk', 'SearchPeople', 'ChooseYourDepartment']
   document.title = to.meta.title;
   const token = getCookie('token');
   if (token == null && !publicURLs.includes(to.name)) {
