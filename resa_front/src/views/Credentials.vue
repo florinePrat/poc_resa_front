@@ -26,7 +26,7 @@
                         <label><input class="uk-checkbox" type="checkbox" checked> Rester connecter ? </label>
                     </div>
 
-                    <button class="uk-button uk-button-default" @click="loginMe()">Me connecter</button>
+                    <button type="submit" class="uk-button uk-button-default" @click="loginMe()">Me connecter</button>
 
                 </form>
               </div>
@@ -107,12 +107,11 @@ export default {
 
   methods: {
     loginMe()  {
-      console.log("loginmethod called")
+      console.log("login method called")
       console.log(this.mail, this.password)
       login(this.mail.trim(), this.password)
         .then((res) => {
           setCookie("token", res.data.token, 99999999999999999);
-          this.$router.push("/homeview");
         })
         .catch((err) => {
           this.password = "";
