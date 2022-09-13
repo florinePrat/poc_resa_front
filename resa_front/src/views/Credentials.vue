@@ -8,20 +8,20 @@
               </div>
           </div>
           <div>
-              <div class="uk-card uk-card-default uk-card-body">
+              <div class="uk-card uk-card-body">
                 <form  class="uk-align-center uk-margin-medium uk-padding-medium">
                   <legend class="uk-legend">Connexion : </legend>
 
                     <div class="uk-margin">
-                        <input class="uk-input" type="text" placeholder="Email" v-model="mail">
+                        <input :class="'uk-input uk-form ' + colorEmail"  type="text" placeholder="Email" v-model="mail">
                     </div>
 
                     <div class="uk-margin">
-                        <input class="uk-input" type="password" placeholder="Mot de passe" v-model="password">
+                        <input :class="'uk-input uk-form ' + colorPassword"  type="password" placeholder="Mot de passe" v-model="password">
                     </div>
 
                     <div class="uk-margin uk-grid-small uk-child-width-auto uk-grid">
-                        <label><input class="uk-checkbox" type="checkbox" checked> Rester connecter ? </label>
+                        <label><input class="uk-checkbox uk-margin-small-right" type="checkbox" checked> Rester connecter ? </label>
                     </div>
 
                     <button type="submit" class="uk-button uk-button-default" @click="loginMe()">Me connecter</button>
@@ -39,6 +39,7 @@
 </template>
 
 <script>
+import UIkit from 'uikit';
 import { login } from "../utils/users/login";
 import {getCookie, setCookie } from "../utils/cookies";
 
@@ -58,7 +59,7 @@ export default {
   },
   beforeCreate() {
     if (getCookie("token")) {
-      this.$router.push("/dashboard");
+      this.$router.push("/");
     }
   },
   computed: {
@@ -111,16 +112,11 @@ export default {
         .catch((err) => {
           this.password = "";
           if (err.response) {
-            //UIkit.modal.dialog("<p class='uk-modal-body uk-text-center'>Mauvais email ou mot de passe ❌</p>");
+            UIkit.modal.dialog("<p class='uk-modal-body uk-text-center'>Mauvais email ou mot de passe ❌</p>");
           } else {
-            //UIkit.modal.dialog("<p class='uk-modal-body uk-text-center'>Pas de connexion internet ❌</p>");
+            UIkit.modal.dialog("<p class='uk-modal-body uk-text-center'>Pas de connexion internet ❌</p>");
           }
         })
-      //if (this.isEmailValid && this.isPasswordValid) {
-        
-      //} else {
-        //UIkit.modal.dialog("<p class='uk-modal-body uk-text-center'>Champs non valides ❌</p>");
-      //}
     }
   }
 }

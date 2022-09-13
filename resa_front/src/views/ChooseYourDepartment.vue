@@ -41,9 +41,11 @@
               </div>
           </div>
           <div>
+            <router-link to="/bookingdesk">
               <div class="uk-card uk-card-default uk-card-body">
                 PROJET <br> {{nbDeskAvailable}} bureaux disponibles <br> <!-- <hr class="uk-divider-small uk-text-small"/> <label class="uk-text-meta"><input class="uk-checkbox" type="checkbox"> M'avertir si un bureau se libère</label> -->
               </div>
+            </router-link>
           </div>
           <div>
               <div class="uk-card uk-card-default uk-card-body">
