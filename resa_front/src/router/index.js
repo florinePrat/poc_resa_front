@@ -22,8 +22,9 @@ const routes = [
     },
   },
   {
-    path: '/bookingdesk/',
+    path: '/bookingdesk/:department',
     name: 'Bookingdesk',
+    props: true,
     component: () =>
         import ('../views/BookingDesk.vue'),
     meta: {

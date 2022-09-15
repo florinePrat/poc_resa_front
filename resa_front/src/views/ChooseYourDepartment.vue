@@ -20,58 +20,13 @@
 
     <div class="uk-margin-xlarge-left uk-margin-xlarge-right uk-margin-medium-top">
       <div class="uk-grid-column-small uk-grid-row-large uk-child-width-1-4@s uk-text-center" uk-grid>
-          <div>
-              <div class="uk-card uk-card-default uk-card-body">
-                DEV <br> {{nbDeskAvailable}} bureaux disponibles <br> <!-- <hr class="uk-divider-small uk-text-small"/> <label class="uk-text-meta"><input class="uk-checkbox" type="checkbox"> M'avertir si un bureau se libère</label> -->
-              </div>
-          </div>
-          <div>
-              <div class="uk-card uk-card-default uk-card-body">
-                Fidé <br> {{nbDeskAvailable}} bureaux disponibles <br> <!-- <hr class="uk-divider-small uk-text-small"/> <label class="uk-text-meta"><input class="uk-checkbox" type="checkbox"> M'avertir si un bureau se libère</label> -->
-              </div>
-          </div>
-          <div>
-              <div class="uk-card uk-card-default uk-card-body">
-                Mkt <br> {{nbDeskAvailable}} bureaux disponibles <br> <!-- <hr class="uk-divider-small uk-text-small"/> <label class="uk-text-meta"><input class="uk-checkbox" type="checkbox"> M'avertir si un bureau se libère</label> -->
-              </div>
-          </div>
-          <div>
-              <div class="uk-card uk-card-default uk-card-body">
-                P2P <br> {{nbDeskAvailable}} bureaux disponibles <br> <!-- <hr class="uk-divider-small uk-text-small"/> <label class="uk-text-meta"><input class="uk-checkbox" type="checkbox"> M'avertir si un bureau se libère</label> -->
-              </div>
-          </div>
-          <div>
-            <router-link to="/bookingdesk">
-              <div class="uk-card uk-card-default uk-card-body">
-                PROJET <br> {{nbDeskAvailable}} bureaux disponibles <br> <!-- <hr class="uk-divider-small uk-text-small"/> <label class="uk-text-meta"><input class="uk-checkbox" type="checkbox"> M'avertir si un bureau se libère</label> -->
-              </div>
-            </router-link>
-          </div>
-          <div>
-              <div class="uk-card uk-card-default uk-card-body">
-                R&D <br> {{nbDeskAvailable}} bureaux disponibles <br> <!-- <hr class="uk-divider-small uk-text-small"/> <label class="uk-text-meta"><input class="uk-checkbox" type="checkbox"> M'avertir si un bureau se libère</label> -->
-              </div>
-          </div>
-          <div>
-              <div class="uk-card uk-card-default uk-card-body">
-                Sales <br> {{nbDeskAvailable}} bureaux disponibles <br> <!-- <hr class="uk-divider-small uk-text-small"/> <label class="uk-text-meta"><input class="uk-checkbox" type="checkbox"> M'avertir si un bureau se libère</label> -->
-              </div>
-          </div>
-          <div>
-              <div class="uk-card uk-card-default uk-card-body">
-                SDR <br> {{nbDeskAvailable}} bureaux disponibles <br> <!-- <hr class="uk-divider-small uk-text-small"/> <label class="uk-text-meta"><input class="uk-checkbox" type="checkbox"> M'avertir si un bureau se libère</label> -->
-              </div>
-          </div>
-          <div><div></div></div>
-          <div>
-              <div class="uk-card uk-card-default uk-card-body">
-                Support <br> {{nbDeskAvailable}} bureaux disponibles <br> <!-- <hr class="uk-divider-small uk-text-small"/> <label class="uk-text-meta"><input class="uk-checkbox" type="checkbox"> M'avertir si un bureau se libère</label> -->
-              </div>
-          </div>
-          <div>
-              <div class="uk-card uk-card-default uk-card-body">
-                Test-op <br> {{nbDeskAvailable}} bureaux disponibles <br> <!-- <hr class="uk-divider-small uk-text-small"/> <label class="uk-text-meta"><input class="uk-checkbox" type="checkbox"> M'avertir si un bureau se libère</label> -->
-              </div>
+         
+          <div v-for="(item, key) in deskAvailable" v-bind:key="key">
+             <router-link :to="{name : 'Bookingdesk', params:{department : item.name}}">
+                <div class="uk-card uk-card-default uk-card-body">
+                  {{item.name}} <br> {{item.nb.length}} bureaux disponibles <br> <!-- <hr class="uk-divider-small uk-text-small"/> <label class="uk-text-meta"><input class="uk-checkbox" type="checkbox"> M'avertir si un bureau se libère</label> -->
+                </div>
+             </router-link>
           </div>
       </div>
     </div>
@@ -103,10 +58,306 @@ export default {
   },
   data() {
     return {
-      nbDeskAvailable : "3"
+      data : [],
+      deskAvailable : []
     };
   },
   mounted() {
+    this.data = [
+      {
+        _id : "fverageiaogh545",
+        name : "Batman",
+        location : {
+          department : "Project",
+          room : "211",
+          nb : "1"
+        },
+        itemList : [
+          {
+            _id : "brgyuzafgel545",
+            nb : 2
+          },
+          {
+            _id : "brgyuzafgel545",
+            nb : 2
+          },
+          {
+            _id : "brgyuzafgel545",
+            nb : 2
+          },
+        ]
+      },
+      {
+        _id : "fverageiaogh545",
+        name : "Spiderman",
+        location : {
+          department : "Project",
+          room : "211",
+          nb : "2"
+        },
+        itemList : [
+          {
+            _id : "brgyuzafgel545",
+            nb : 2
+          },
+          {
+            _id : "brgyuzafgel545",
+            nb : 2
+          },
+          {
+            _id : "brgyuzafgel545",
+            nb : 2
+          },
+        ]
+      },
+      {
+        _id : "fverageiaogh545",
+        name : "Megamind",
+        location : {
+          department : "Project",
+          room : "211",
+          nb : "3"
+        },
+        itemList : [
+          {
+            _id : "brgyuzafgel545",
+            nb : 2
+          },
+          {
+            _id : "brgyuzafgel545",
+            nb : 2
+          },
+          {
+            _id : "brgyuzafgel545",
+            nb : 2
+          },
+        ]
+      },
+      {
+        _id : "fverageiaogh545",
+        name : "Thor",
+        location : {
+          department : "Project",
+          room : "261",
+          nb : "1"
+        },
+        itemList : [
+          {
+            _id : "brgyuzafgel545",
+            nb : 2
+          },
+          {
+            _id : "brgyuzafgel545",
+            nb : 2
+          },
+          {
+            _id : "brgyuzafgel545",
+            nb : 2
+          },
+        ]
+      },
+      {
+        _id : "fverageiaogh545",
+        name : "LadyWoman",
+        location : {
+          department : "Sales",
+          room : "52",
+          nb : "1"
+        },
+        itemList : [
+          {
+            _id : "brgyuzafgel545",
+            nb : 2
+          },
+          {
+            _id : "brgyuzafgel545",
+            nb : 2
+          },
+          {
+            _id : "brgyuzafgel545",
+            nb : 2
+          },
+        ]
+      },
+      {
+        _id : "fverageiaogh545",
+        name : "Superbassman",
+        location : {
+          department : "SDR",
+          room : "B",
+          nb : "2"
+        },
+        itemList : [
+          {
+            _id : "brgyuzafgel545",
+            nb : 2
+          },
+          {
+            _id : "brgyuzafgel545",
+            nb : 2
+          },
+          {
+            _id : "brgyuzafgel545",
+            nb : 2
+          },
+        ]
+      },
+      {
+        _id : "fverageiaogh545",
+        name : "DeadPool",
+        location : {
+          department : "DEV",
+          room : "9",
+          nb : "1"
+        },
+        itemList : [
+          {
+            _id : "brgyuzafgel545",
+            nb : 2
+          },
+          {
+            _id : "brgyuzafgel545",
+            nb : 2
+          },
+          {
+            _id : "brgyuzafgel545",
+            nb : 2
+          },
+        ]
+      },
+      {
+        _id : "fverageiaogh545",
+        name : "Batman",
+        location : {
+          department : "DEV",
+          room : "1",
+          nb : "1"
+        },
+        itemList : [
+          {
+            _id : "brgyuzafgel545",
+            nb : 2
+          },
+          {
+            _id : "brgyuzafgel545",
+            nb : 2
+          },
+          {
+            _id : "brgyuzafgel545",
+            nb : 2
+          },
+        ]
+      },
+      {
+        _id : "fverageiaogh545",
+        name : "Batman",
+        location : {
+          department : "Fidé",
+          room : "21",
+          nb : "1"
+        },
+        itemList : [
+          {
+            _id : "brgyuzafgel545",
+            nb : 2
+          },
+          {
+            _id : "brgyuzafgel545",
+            nb : 2
+          },
+          {
+            _id : "brgyuzafgel545",
+            nb : 2
+          },
+        ]
+      },
+      {
+        _id : "fverageiaogh545",
+        name : "Batman",
+        location : {
+          department : "Sales",
+          room : "211",
+          nb : "1"
+        },
+        itemList : [
+          {
+            _id : "brgyuzafgel545",
+            nb : 2
+          },
+          {
+            _id : "brgyuzafgel545",
+            nb : 2
+          },
+          {
+            _id : "brgyuzafgel545",
+            nb : 2
+          },
+        ]
+      },
+      {
+        _id : "fverageiaogh545",
+        name : "Batman",
+        location : {
+          department : "Fidé",
+          room : "211",
+          nb : "1"
+        },
+        itemList : [
+          {
+            _id : "brgyuzafgel545",
+            nb : 2
+          },
+          {
+            _id : "brgyuzafgel545",
+            nb : 2
+          },
+          {
+            _id : "brgyuzafgel545",
+            nb : 2
+          },
+        ]
+      },
+      {
+        _id : "fverageiaogh545",
+        name : "Batman",
+        location : {
+          department : "DEV",
+          room : "211",
+          nb : "1"
+        },
+        itemList : [
+          {
+            _id : "brgyuzafgel545",
+            nb : 2
+          },
+          {
+            _id : "brgyuzafgel545",
+            nb : 2
+          },
+          {
+            _id : "brgyuzafgel545",
+            nb : 2
+          },
+        ]
+      }
+    ];
+
+    let deskLocation = this.data.map(function(item){ return item.location });
+    console.log(deskLocation);
+
+    deskLocation.forEach(dep => {
+      let myNumber = deskLocation.filter(value => value.department === dep.department);
+      this.deskAvailable.push({
+        name : dep.department,
+        nb : myNumber
+      })
+    });
+
+    const names = this.deskAvailable.map(item => item.name);
+    this.deskAvailable = this.deskAvailable.filter(({name}, index) => !names.includes(name, index + 1)); 
+
+    console.log(this.deskAvailable)
+
     console.log(this.date.toLocaleDateString("fr"))
     getavailableDesks(this.date.toLocaleDateString("fr")).then((res) => {
       console.log(res.data)
@@ -114,6 +365,10 @@ export default {
     .catch((err) => {
       console.log(err)
     })
+  },
+
+  methods : {
   }
+
 }
 </script>

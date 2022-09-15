@@ -12,8 +12,9 @@ export default {
   name: 'BookingDesk',
   components: {
     ProjectRoom
-},
+  },
   mounted() {
+    console.log(this.$route.params.department)
   }
 }
 </script>
