@@ -24,11 +24,13 @@
           <div v-for="(item, key) in deskAvailable" v-bind:key="key">
              <router-link :to="{name : 'Bookingdesk', params:{department : item.name}}">
                 <div class="uk-card uk-card-default uk-card-body">
-                  {{item.name}} <br> {{item.nb.length}} bureaux disponibles <br> <!-- <hr class="uk-divider-small uk-text-small"/> <label class="uk-text-meta"><input class="uk-checkbox" type="checkbox"> M'avertir si un bureau se libère</label> -->
+                  {{item.name}} <br> {{item.nb.length}} bureaux disponibles
                 </div>
              </router-link>
           </div>
       </div>
+      <hr> <label class="uk-text-meta "><input class="uk-checkbox" type="checkbox"> M'avertir si un bureau se libère dans mon département</label>
+
     </div>
 
 
