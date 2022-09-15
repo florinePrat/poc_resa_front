@@ -40,7 +40,7 @@
                       <div class="uk-margin-small-top"><label><input class="uk-checkbox uk-margin-small-right" type="checkbox" checked> Rester connecter ? </label></div>
                     </div>
                     <div class="uk-margin-top uk-flex-inline uk-flex uk-flex-row-reverse">
-                      <button type="submit" class="uk-button" @click="loginMe" :disabled="!isEmailValid || !isPasswordValid || processing">
+                      <button type="submit" class="uk-button" @click="loginMe" :disabled="!isEmailValid || !isPasswordValid">
                         Connexion
                       </button>
                     </div>
@@ -75,7 +75,7 @@
                       </div>
                     </div>
                     <div class="uk-margin-medium-top uk-flex-inline uk-flex uk-flex-row-reverse">
-                      <button class="uk-button" @click="signup" type="submit" :disabled="!isEmailValid || !isPasswordValid || !isNameValid || processing">
+                      <button class="uk-button" @click="signup" type="submit" :disabled="!isEmailValid || !isPasswordValid || !isNameValid">
                         M'inscrire
                       </button>
                     </div>
@@ -97,7 +97,7 @@
                       </div>
                     </div>
                     <div class="uk-margin-medium-top uk-flex-inline uk-flex uk-flex-row-reverse" v-if="!sent">
-                      <button class="uk-button" @click="forgot()" type="submit" :disabled="!isEmailValid || processing">
+                      <button class="uk-button" @click="forgot()" type="submit" :disabled="!isEmailValid">
                         Envoyer lien
                       </button>
                       <button class="uk-button" @click="state = 0" style="margin-right:20px;">
@@ -188,9 +188,8 @@ export default {
   },
 
   methods: {
-    loginMe()  {
-      console.log("login method called")
-      console.log(this.mail, this.password)
+    loginMe(e)  {
+      e.preventDefault();
       login(this.mail.trim(), this.password)
         .then((res) => {
           setCookie("token", res.data.token, 99999999999999999);
@@ -206,7 +205,8 @@ export default {
         })
     },
 
-    signup() {
+    signup(e) {
+      e.preventDefault();
       if (this.isNameValid && this.isEmailValid && this.isPasswordValid) {
         signup(this.mail.trim(), this.name.trim(), this.password)
           .then((res) => {

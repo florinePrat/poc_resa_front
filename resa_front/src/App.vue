@@ -25,7 +25,8 @@
       if (token) {
         this.myNavLogin = true;
       }
-    }
+    },
+  
   };
 </script>
 

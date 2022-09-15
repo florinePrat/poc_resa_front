@@ -64,6 +64,7 @@ router.beforeEach((to, from, next) => {
     if (token == null && !publicURLs.includes(to.name)) {
         return next({ path: '/Credentials' });
     } else {
+        
         return next();
     }
 });

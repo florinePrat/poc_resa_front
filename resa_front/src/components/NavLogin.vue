@@ -16,9 +16,9 @@
         </ul>
 
         <div class="uk-navbar-item">
-            <form action="javascript:void(0)">
-                <input class="uk-input uk-form-width-small uk-margin-large-left" type="text" placeholder="Trigrame">
-                <router-link to="/searchpeople" ><button class="uk-button uk-button-default">Trouver quelqu'un</button></router-link>
+            <form class="uk-search uk-search-default">
+                <a href="" class="uk-search-icon-flip" uk-search-icon></a>
+                <input class="uk-search-input" type="search" placeholder="Trigramme">
             </form>
         </div>
 
@@ -47,7 +47,7 @@ export default {
     logout() {
         localStorage.clear();
         eraseCookie("token");
-        this.$router.push("/");
+        this.$router.push("/credentials");
     }
     }
 
