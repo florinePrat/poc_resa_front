@@ -194,6 +194,7 @@ export default {
       login(this.mail.trim(), this.password)
         .then((res) => {
           setCookie("token", res.data.token, 99999999999999999);
+          this.$router.push("/");
         })
         .catch((err) => {
           this.password = "";
