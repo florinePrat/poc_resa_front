@@ -65,7 +65,7 @@ export default {
     };
   },
   mounted() {
-    this.data = [
+   /*  this.data = [
       {
         _id : "fverageiaogh545",
         name : "Batman",
@@ -342,27 +342,30 @@ export default {
           },
         ]
       }
-    ];
+    ]; */
 
-    let deskLocation = this.data.map(function(item){ return item.location });
-    console.log(deskLocation);
 
-    deskLocation.forEach(dep => {
-      let myNumber = deskLocation.filter(value => value.department === dep.department);
-      this.deskAvailable.push({
-        name : dep.department,
-        nb : myNumber
-      })
-    });
-
-    const names = this.deskAvailable.map(item => item.name);
-    this.deskAvailable = this.deskAvailable.filter(({name}, index) => !names.includes(name, index + 1)); 
-
-    console.log(this.deskAvailable)
 
     console.log(this.date.toLocaleDateString("fr"))
     getavailableDesks(this.date.toLocaleDateString("fr")).then((res) => {
-      console.log(res.data)
+
+      this.data = res.data.availableDesks
+
+      let deskLocation = this.data.map(function(item){ return item.location });
+      console.log(deskLocation);
+
+      deskLocation.forEach(dep => {
+        let myNumber = deskLocation.filter(value => value.department === dep.department);
+        this.deskAvailable.push({
+          name : dep.department,
+          nb : myNumber
+        })
+      });
+
+      const names = this.deskAvailable.map(item => item.name);
+      this.deskAvailable = this.deskAvailable.filter(({name}, index) => !names.includes(name, index + 1)); 
+
+      console.log(this.deskAvailable)
     })
     .catch((err) => {
       console.log(err)

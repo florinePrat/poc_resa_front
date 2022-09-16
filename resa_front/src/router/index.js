@@ -58,8 +58,8 @@ const router = createRouter({
   
 
 router.beforeEach((to, from, next) => {
-    //const publicURLs = ['Credentials']
-    const publicURLs = ['Home', 'Credentials', 'Bookingdesk', 'SearchPeople', 'ChooseYourDepartment']
+    const publicURLs = ['Credentials']
+    //const publicURLs = ['Home', 'Credentials', 'Bookingdesk', 'SearchPeople', 'ChooseYourDepartment']
     document.title = to.meta.title;
     const token = getCookie('token');
     if (token == null && !publicURLs.includes(to.name)) {
