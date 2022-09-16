@@ -13,6 +13,12 @@ export default createStore({
     }
   },
   mutations: {
+    login (state) {
+      state.connected = true;
+    },
+    logout (state) {
+      state.connected = false;
+    }
   },
   actions: {
   },

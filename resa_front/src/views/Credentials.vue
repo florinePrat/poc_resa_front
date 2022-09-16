@@ -193,7 +193,7 @@ export default {
       login(this.mail.trim(), this.password)
         .then((res) => {
           setCookie("token", res.data.token, 99999999999999999);
-          this.$store.state.connected = true;
+          this.$store.commit('login');
           console.log(this.$store.getters.doneConnected)
           this.$router.push("/");
         })
@@ -213,6 +213,7 @@ export default {
         signup(this.mail.trim(), this.name.trim(), this.password)
           .then((res) => {
             setCookie("token", res.data.token, 99999999999999999);
+            this.$store.commit('login');
             this.$router.push("/");
           })
           .catch((err) => {
