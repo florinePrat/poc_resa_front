@@ -22,7 +22,7 @@ const routes = [
     },
   },
   {
-    path: '/bookingdesk/:department',
+    path: '/bookingdesk/:department/:date',
     name: 'Bookingdesk',
     props: true,
     component: () =>

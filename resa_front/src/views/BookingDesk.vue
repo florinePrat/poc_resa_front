@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <ProjectRoom/>
+    <ProjectRoom date=$route.params.date />
   </div>
 </template>
 
@@ -15,6 +15,7 @@ export default {
   },
   mounted() {
     console.log(this.$route.params.department)
+    console.log(this.$route.params.date)
   }
 }
 </script>
