@@ -2,7 +2,7 @@
 
     <div class="uk-margin-medium uk-padding-medium">
         <div class="uk-position-top-center uk-margin-xlarge-top">
-            <p class="uk-text-lead">Salles Projet</p>
+            <p class="uk-text-lead">Salles Projet : le {{date}}</p>
         </div>
 
 
@@ -63,6 +63,9 @@
 <script>
 export default {
     name: 'ProjectRoom',
+    props: {
+        date: new Date
+    },
     mounted() {
         this.data = [
         {

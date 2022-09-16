@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <ProjectRoom date=$route.params.date />
+    <ProjectRoom :date="$route.params.date" />
   </div>
 </template>
 
