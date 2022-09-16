@@ -47,6 +47,8 @@ export default {
     logout() {
         localStorage.clear();
         eraseCookie("token");
+        this.$store.state.connected = false;
+        console.log(this.$store.getters.doneConnected)
         this.$router.push("/credentials");
     }
     }

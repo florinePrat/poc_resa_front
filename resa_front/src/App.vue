@@ -1,5 +1,5 @@
 <template>
-  <Nav v-if="!myNavLogin"/>
+  <Nav v-if="!$store.getters.doneConnected"/>
   <NavLogin v-else/>
   <router-view/>
 </template>
@@ -9,7 +9,6 @@
   import Icons from 'uikit/dist/js/uikit-icons';
   import Nav from './components/Nav.vue';
   import NavLogin from './components/NavLogin.vue';
-  import { getCookie } from "./utils/cookies";
   UIkit.use(Icons);
   export default {
     name: "App",
@@ -20,11 +19,7 @@
       };
     },
     created(){
-      const token = getCookie('token');
-      console.log({token})
-      if (token) {
-        this.myNavLogin = true;
-      }
+      
     },
   
   };
