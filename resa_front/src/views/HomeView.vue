@@ -1,8 +1,8 @@
 <template>
-  <div class="home">
+  <div class="uk-margin-large-top" >
     <div>
-      <div>
-        <router-link to="/choosedepartment" class="uk-margin-xlarge-left"><a class="uk-button uk-button-default uk-margin-xlarge-left"><img alt="Vue logo" src="../assets/favicon.png" class="uk-width-small">Réserver un bureau</a></router-link>
+      <div style="text-align:center">
+        <router-link to="/choosedepartment" ><a class="uk-button uk-button-default"><img alt="Vue logo" src="../assets/favicon.png" class="uk-width-small">Réserver un bureau</a></router-link>
       </div>
     </div>
 
@@ -11,22 +11,32 @@
     </div>
    
     
-    <div >
-      <router-link to="/searchpeople" class="uk-margin-xlarge-left"><a class="uk-button uk-button-default uk-margin-xlarge-left"><img alt="Vue logo" src="../assets/favicon.png" class="uk-width-small"> Trouver quelqu'un</a></router-link>
+    <div style="text-align:center">
+      <router-link to="/searchpeople" ><a class="uk-button uk-button-default"><img alt="Vue logo" src="../assets/favicon.png" class="uk-width-small"> Trouver quelqu'un</a></router-link>
     </div>
+
+    <!--<DevRoom/> -->
 
    
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
+//import DevRoom from "../components/DevRoom.vue";
 
 export default {
   name: 'HomeView',
   components: {
+    //DevRoom
 },
   mounted() {
   }
 }
 </script>
+<style scoped>
+.uk-button-default{
+  background-color: transparent;
+  color: #222;
+  border:null !important
+}
+</style>

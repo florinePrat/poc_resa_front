@@ -48,7 +48,6 @@
             </div>
          </div>
 
-
     </div>
 
 </template>
@@ -75,7 +74,7 @@ export default {
     mounted() {
         if(this.searchPeople){
             console.log(this.trigramme)
-            this.searchPeopleByTri(this.trigramme, '18/09/2022')
+            this.searchPeopleByTri(this.trigramme, this.date)
         }else{
             this.getAvailableDesks();
         }
