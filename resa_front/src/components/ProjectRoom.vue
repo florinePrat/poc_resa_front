@@ -1,13 +1,7 @@
 <template>
 
     <div class="uk-margin-medium uk-padding-medium">
-        <div class="uk-position-top-center uk-margin-xlarge-top">
-            <p class="uk-text-lead">Salles Projet : le {{date}}</p>
-        </div>
-
-
-
-
+        
         <div class="uk-grid-match uk-child-width-expand@s uk-text-center uk-margin-xlarge-top uk-margin-small-right uk-margin-small-left" uk-grid>
             <div class="uk-width-expand@m">
                 <div class="uk-card uk-card-default uk-card-body" style="height: 280px">
@@ -62,21 +56,53 @@
 
 <script>
 import { getavailableDesksByDepartment } from '@/utils/desks/getAvailableDesksByDepartment';
+import { getBookingByUserByDate } from '@/utils/bookings/getBookingByUserByDate';
+import { createBooking } from '@/utils/bookings/createBooking';
+import UIkit from 'uikit';
 export default {
     name: 'ProjectRoom',
     props: {
-        date: new Date
+        date: new Date,
+        searchPeople: Boolean,
+        trigramme: String
     },
     data() {
-    return {
-      storeElement : null,
-      storeEvent : null,
-    };
-  },
+        return {
+        storeElement : null,
+        storeEvent : null,
+        };
+    },
     mounted() {
-        getavailableDesksByDepartment(this.date, "PROJET").then((res) => {
+        if(this.searchPeople){
+            console.log(this.trigramme)
+            this.searchPeopleByTri(this.trigramme, '18/09/2022')
+        }else{
+            this.getAvailableDesks();
+        }
+    },
+    methods :{
+        book(idDesk, nameDesk){
+            console.log()
+            createBooking(idDesk, this.date).then((res)=>{
+                UIkit.modal.dialog("<p class='uk-modal-body uk-text-center'> Vous venez de réserver le bureau " + nameDesk + " à la date du "+ this.date+". 🤞</p>");
+                console.log(res.data.booking)
+                this.getAvailableDesks();
+            }).catch((err)=>{
+                if(err.response.data.error){
+                    UIkit.modal.dialog("<p class='uk-modal-body uk-text-center'>" + err.response.data.error + " ❌</p>");
+                }
+                else{
+                    console.log(err)
+                }
+                
+            })
+        },
+
+        getAvailableDesks(){
+            getavailableDesksByDepartment(this.date, "PROJET").then((res) => {
             console.log(res.data.availableDesks)
             document.querySelectorAll("button[data-room]").forEach(el => {
+                el.classList.remove("success");
                 const room = parseInt(el.dataset.room)
                 const deskId = el.dataset.deskId
                 const deskInfo = res.data.availableDesks.find(e => e.location.room === room && e.location.number === deskId)
@@ -84,7 +110,7 @@ export default {
                     el.classList.add("success")
                     el.setAttribute("uk-tooltip", deskInfo.itemList.map(e => `title:${deskInfo.name} : ${e._id.name}`).reduce((prev, next) => `${prev}\n${next}`))
                     const onClick = () => {
-                        this.book(deskInfo._id) 
+                        this.book(deskInfo._id, deskInfo.name)
                     }
                     el.addEventListener('click', onClick)
                     // el.textContent += " " + deskInfo.name;
@@ -94,88 +120,34 @@ export default {
                     el.disabled = true;
                 }
             })
-        })
-        .catch((err) => {
-            console.log(err)
-        })
+            })
+            .catch((err) => {
+                console.log(err)
+            })
+        },
 
-        /* this.data = [
-        {
-            _id : "fverageiaogh545",
-            name : "Batman",
-            location : {
-                department : "Project",
-                room : "211",
-                nb : "1"
-            },
-            itemList : [
-            {
-                _id : "brgyuzafgel545",
-                nb : 2
-            },
-            {
-                _id : "brgyuzafgel545",
-                nb : 2
-            },
-            {
-                _id : "brgyuzafgel545",
-                nb : 2
-            },
-            ]
-        },
-        {
-            _id : "fverageiaogh545",
-            name : "Spiderman",
-            location : {
-                department : "Project",
-                room : "211",
-                nb : "2"
-            },
-            itemList : [
-            {
-                _id : "brgyuzafgel545",
-                nb : 2
-            },
-            {
-                _id : "brgyuzafgel545",
-                nb : 2
-            },
-            {
-                _id : "brgyuzafgel545",
-                nb : 2
-            },
-            ]
-        },
-        {
-            _id : "fverageiaogh545",
-            name : "Megamind",
-            location : {
-                department : "Project",
-                room : "232",
-                nb : "3"
-            },
-            itemList : [
-            {
-                _id : "brgyuzafgel545",
-                nb : 2
-            },
-            {
-                _id : "brgyuzafgel545",
-                nb : 2
-            },
-            {
-                _id : "brgyuzafgel545",
-                nb : 2
-            },
-            ]
-        },
-        ]; */
-
-    },
-    methods :{
-        book(id){
-            console.log("booked", id);
+        searchPeopleByTri(trigramme, date){
+            getBookingByUserByDate(trigramme, date).then(res => {
+                console.log(res.data.userBooking)
+                document.querySelectorAll("button[data-room]").forEach(el => {
+                    el.classList.remove("success");
+                    const room = parseInt(el.dataset.room);
+                    const deskId = el.dataset.deskId;
+                    if (res.data.userBooking.idDesk.location.room === room && res.data.userBooking.idDesk.location.number === deskId) {
+                        el.classList.add("success")
+                    } else {
+                        el.disabled = true;
+                    }
+                })
+            })
+            .catch((err) => {
+                console.log(err)
+            })
         }
+
+
+
+
     },
 
     beforeUnmount() {

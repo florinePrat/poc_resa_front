@@ -12,7 +12,7 @@
    
     
     <div >
-      <router-link to="/credentials" class="uk-margin-xlarge-left"><a class="uk-button uk-button-default uk-margin-xlarge-left"><img alt="Vue logo" src="../assets/favicon.png" class="uk-width-small"> Trouver quelqu'un</a></router-link>
+      <router-link to="/searchpeople" class="uk-margin-xlarge-left"><a class="uk-button uk-button-default uk-margin-xlarge-left"><img alt="Vue logo" src="../assets/favicon.png" class="uk-width-small"> Trouver quelqu'un</a></router-link>
     </div>
 
    

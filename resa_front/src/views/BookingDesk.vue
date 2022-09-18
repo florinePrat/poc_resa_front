@@ -1,6 +1,9 @@
 <template>
   <div class="home">
-    <ProjectRoom :date="$route.params.date" />
+    <div class="uk-position-top-center uk-margin-xlarge-top">
+        <p class="uk-text-lead">Salles Projet : le {{$route.params.date}}</p>
+    </div>
+    <ProjectRoom :date="$route.params.date" :searchPeople="false"/>
   </div>
 </template>
 

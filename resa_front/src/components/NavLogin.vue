@@ -13,14 +13,13 @@
                     Réserver un bureau
                 </router-link>
             </li>
+            <li>
+                <router-link to="/searchpeople" >
+                    <span class="uk-icon uk-margin-small-right uk-margin-large-left" uk-icon="icon: user"></span>
+                    Trouver quelqu'un
+                </router-link>
+            </li>
         </ul>
-
-        <div class="uk-navbar-item">
-            <form class="uk-search uk-search-default">
-                <a href="" class="uk-search-icon-flip" uk-search-icon></a>
-                <input class="uk-search-input" type="search" placeholder="Trigramme">
-            </form>
-        </div>
 
     </div>
 
